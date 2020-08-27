@@ -4,12 +4,25 @@
     <title>Foodlog</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "shared/header" %>
+
+    <% if notice.present? %>
+      <div class="notification is-link is-light"><%= notice %></div>
+    <% end %>
+
+    <% if alert.present? %>
+      <div class="notification is-danger is-light"><%= alert %></div>
+    <% end %>
+
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

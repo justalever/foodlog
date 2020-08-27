@@ -1,0 +1,45 @@
+<%= form_with(model: entry, local: true) do |form| %>
+  <% if entry.errors.any? %>
+    <div class="message is-danger">
+      <div class="message-header">
+        <p><%= pluralize(entry.errors.count, "error") %> prohibited this entry from being saved:</p>
+      </div>
+      <div class="message-body">
+        <ul>
+          <% entry.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :meal_type, class: "label" %>
+    <%= form.text_field :meal_type, class: "input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :calories, class: "label" %>
+    <%= form.number_field :calories, class: "input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :proteins, class: "label" %>
+    <%= form.number_field :proteins, class: "input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :carbohydrates, class: "label" %>
+    <%= form.number_field :carbohydrates, class: "input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fats, class: "label" %>
+    <%= form.number_field :fats, class: "input" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "button is-success" %>
+  </div>
+<% end %>
